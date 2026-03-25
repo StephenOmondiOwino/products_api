@@ -1,0 +1,36 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+app.use(cors());
+app.use(express.json());
+
+// ✅ SWAGGER FIRST
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// ✅ THEN ROUTES
+const productRoutes = require('./routes/products');
+app.use('/products', productRoutes);
+
+// Test route
+app.get('/', (req, res) => {
+  res.send('Products API running...');
+});
+
+// DB
+const mongodb = require('./data/database');
+mongodb.initDb((err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('Database connected');
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  }
+});

@@ -1,0 +1,32 @@
+### Create product
+POST http://localhost:3001/products
+Content-Type: application/json
+
+{
+  "name": "Phone",
+  "price": 20000,
+  "category": "Electronics",
+  "brand": "Samsung",
+  "inStock": true,
+  "rating": 4.3,
+  "createdAt": "2026-03-24"
+}
+### Get all products
+GET http://localhost:3001/products
+### Get a product by ID
+GET http://localhost:3001/products/{id}
+### Update a product by ID
+PUT http://localhost:3001/products/{id}
+Content-Type: application/json
+
+{
+  "name": "Updated Phone",
+  "price": 22000,
+  "category": "Electronics",
+  "brand": "Samsung",
+  "inStock": true,
+  "rating": 4.5
+}
+### Delete a product by ID
+DELETE http://localhost:3001/products/{id}
+
