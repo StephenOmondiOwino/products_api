@@ -5,6 +5,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
 const session = require('express-session');
 const passport = require('passport');
+const userRoutes = require('./routes/users');
 require('./config/passport');
 
 const app = express();
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
+app.use('/users', userRoutes);
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
