@@ -6,8 +6,9 @@ const doc = {
     title: 'Products API',
     description: 'API for managing products and users' 
   },
-  host: 'localhost:3001',
-  schemes: ['http']
+  host: 'products-api-1-l2as.onrender.com',
+  schemes: ['https']
+  
 };
 
 const outputFile = './swagger-output.json';
@@ -16,6 +17,7 @@ const endpointsFiles = [
   './server.js',
   './routes/products.js',
   './routes/users.js'  
+  
 ];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
