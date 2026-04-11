@@ -5,10 +5,10 @@
     "description": "API for managing products and users",
     "version": "1.0.0"
   },
-  "host": "localhost:3001",
+  "host": "products-api-1-l2as.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
