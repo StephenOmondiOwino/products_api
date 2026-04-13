@@ -12,6 +12,7 @@ router.get('/github/callback',
     failureRedirect: '/'
   }),
   (req, res) => {
+    req.session.user = req.user; 
     res.redirect('/api-docs');
   }
 );
@@ -19,6 +20,7 @@ router.get('/github/callback',
 // Logout
 router.get('/logout', (req, res) => {
   req.logout(() => {
+    req.session.destroy(); 
     res.redirect('/');
   });
 });
